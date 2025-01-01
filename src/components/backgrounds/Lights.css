@@ -1,0 +1,101 @@
+@keyframes pulse {
+	0% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0.2;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+@keyframes pulseSize {
+	0% {
+		transform: scale(1.5);
+		opacity: 1;
+	}
+
+	25% {
+		transform: scale(1);
+		opacity: 0.3;
+	}
+
+	50% {
+		transform: scale(1.5);
+		opacity: 1;
+	}
+	75% {
+		transform: scale(1);
+		opacity: 0.3;
+	}
+
+	100% {
+		transform: scale(1.5);
+		opacity: 1;
+	}
+}
+@keyframes pulseSizeSmall {
+	0% {
+		transform: scale(1.1);
+		opacity: 0.6;
+	}
+
+	25% {
+		transform: scale(1);
+		opacity: 0.3;
+	}
+
+	50% {
+		transform: scale(1.1);
+		opacity: 0.6;
+	}
+	75% {
+		transform: scale(1);
+		opacity: 0.3;
+	}
+
+	100% {
+		transform: scale(1.1);
+		opacity: 0.6;
+	}
+}
+.pulse {
+	animation: pulse 4s infinite;
+}
+
+.pulseSize {
+	animation: pulseSize 9s infinite;
+}
+
+.pulseBeat {
+	animation-timing-function: ease-out;
+	animation: pulseSize 888ms infinite;
+}
+.pulseBeatSmall {
+	animation-timing-function: ease-out;
+	animation: pulseSizeSmall 888ms infinite;
+}
+
+@keyframes fadein {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.fade {
+	animation: fadein 0.5s ease-in-out;
+	transition: opacity 0.5s ease-in-out;
+}
+
+.front {
+	z-index: 99;
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	margin: auto;
+}
