@@ -8,7 +8,7 @@
 		"build": "tsc -b && vite build",
 		"lint": "eslint .",
 		"preview": "vite preview",
-		"start": "serve dist -s"
+		"start": "tsc -b && vite build && serve dist -s"
 	},
 	"dependencies": {
 		"@types/react-modal": "^3.16.3",
