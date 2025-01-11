@@ -60,7 +60,6 @@ export default function HomeBody({ playing }: { playing: boolean }) {
 				</Font>
 				<Text
 					family={'Instrument Sans'}
-					className={playing ? 'pulseBeatSmall' : ''}
 					style={{
 						color: '#fff',
 						textAlign: 'left',

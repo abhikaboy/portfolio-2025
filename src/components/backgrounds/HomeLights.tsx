@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import top from '../../assets/lights/Ellipse 1.png';
 import topRight from '../../assets/lights/Ellipse 2.png';
 import botLeft from '../../assets/lights/Star 1.png';
@@ -34,9 +34,10 @@ type Props = {
 };
 
 export default function HomeLights({ setPlaying, playing }: Props) {
-	const [playSong] = useSound(song, { volume: 0.25, loop: true });
+	const [playSong] = useSound(song, { volume: 0.25, loop: true, interrupt: true });
 	const [playHover] = useSound(hover, { volume: 1, loop: false, interrupt: true });
 	const [playClick] = useSound(click, { volume: 1, loop: false, interrupt: true });
+
 	const [pulseSize, setPulseSize] = React.useState(false);
 	const [popup, setPopup] = React.useState(true);
 
