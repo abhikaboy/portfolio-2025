@@ -1,0 +1,73 @@
+import React from 'react';
+import Font from 'react-font';
+
+type SectionProps = {
+	title: string;
+	content: string;
+};
+type ListSectionProps = {
+	title: string;
+	content: string[];
+};
+
+export type Section = {
+	title: string;
+	type: 'Single' | 'List';
+	content: string | string[];
+};
+
+type Props = {
+	input: Section[];
+};
+
+export default function ProjectSidebar({ input }: Props) {
+	return (
+		<Font family='Avenir' weight={250}>
+			<div
+				style={{
+					display: 'flex',
+					fontSize: 16,
+					flexDirection: 'column',
+					gap: 0,
+				}}>
+				{input.map((item) => (
+					<div
+						style={{
+							display: 'flex',
+							flexDirection: 'column',
+						}}>
+						{item.type === 'Single' ? (
+							// @ts-expect-error meow
+							<Section title={item.title} content={item.content} />
+						) : (
+							// @ts-expect-error meow
+							<ListSection title={item.title} content={item.content} />
+						)}
+					</div>
+				))}
+			</div>
+		</Font>
+	);
+}
+
+function Section({ title, content }: SectionProps) {
+	return (
+		<div>
+			<div style={{ color: '#CECECE', paddingBottom: 4 }}>{title}</div>
+			<div style={{ color: 'white', paddingBottom: 24 }}>{content}</div>
+		</div>
+	);
+}
+
+function ListSection({ title, content }: ListSectionProps) {
+	return (
+		<div>
+			<div style={{ color: '#CECECE', paddingBottom: 4 }}>{title}</div>
+			<div style={{ color: 'white', paddingBottom: 24 }}>
+				{content.map((item) => (
+					<div>{item}</div>
+				))}
+			</div>
+		</div>
+	);
+}

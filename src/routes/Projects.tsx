@@ -4,18 +4,24 @@ import botLight from '../assets/lights/Ellipse 4.png';
 import Font from 'react-font';
 import { AnimatePresence, motion } from 'motion/react';
 import ExperienceBar from '../components/ExperienceBar';
+import { useNavigate } from 'react-router-dom';
 
 export default function Projects() {
 	const projectData = [
 		{
-			place: 'Music Mantle',
-			title: 'Python, Typescript, Nix',
-			description: 'Leveraging Vector Search to create an interactive game',
+			place: 'Couplet',
+			title: 'React Native, Expo, Golang, Postgres',
+			description: 'A dating app to match users based on events and real experiences',
 		},
 		{
 			place: 'Platnm',
 			title: 'React Native, Expo, Golang, Postgres, Supabase',
 			description: 'The one-stop shop for all musical discourse',
+		},
+		{
+			place: 'Music Mantle',
+			title: 'Python, Typescript, Nix',
+			description: 'Leveraging Vector Search to create an interactive game',
 		},
 		{
 			place: 'Relay',
@@ -27,11 +33,7 @@ export default function Projects() {
 			title: 'React, MongoDB, Express',
 			description: 'A collaborative spreadsheet featuring real-time collaboration, graphs, and an audit log',
 		},
-		{
-			place: 'Couplet',
-			title: 'React Native, Expo, Golang, Postgres',
-			description: 'A dating app to match users based on events and real experiences',
-		},
+
 		{
 			place: 'FRC Scouting',
 			title: 'React',
@@ -48,7 +50,7 @@ export default function Projects() {
 			description: 'Website for Professional Business Fraternity at Northeastern',
 		},
 		{
-			place: 'Learnmyfretboard.com',
+			place: 'Learnmyfretboard',
 			title: 'React',
 			description: 'Helping guitarists learn their fretboard interactively',
 		},
@@ -74,6 +76,7 @@ export default function Projects() {
 			description: 'Simulating life on venus. AIGOHackathon Winner.',
 		},
 	];
+	const navigate = useNavigate();
 	return (
 		<AnimatePresence>
 			<div style={{ color: '#fff' }}>
@@ -127,7 +130,13 @@ export default function Projects() {
 							paddingRight: '20%',
 						}}>
 						{projectData.map(({ place, title, description }, index) => (
-							<ExperienceBar place={place} title={title} description={description} key={index} />
+							<ExperienceBar
+								place={place}
+								title={title}
+								description={description}
+								key={index}
+								onClick={() => navigate(`./${place.replace(' ', '')}`)}
+							/>
 						))}
 					</div>
 				</Font>
