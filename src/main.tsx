@@ -6,7 +6,7 @@ import Projects from './routes/Projects.tsx';
 import Everything from './routes/Everything.tsx';
 import Couplet from './routes/Couplet.tsx';
 import Platnm from './routes/Platnm.tsx';
-import { OutletWrapper } from './OutletWrapper.tsx';
+import { OutletWrapper } from './animated/OutletWrapper.tsx';
 
 const router = createBrowserRouter([
 	{
@@ -49,6 +49,6 @@ createRoot(document.getElementById('root')!).render(<RouterProvider router={rout
 
 export const containerVariant = {
 	hidden: { opacity: 0 },
-	enter: { opacity: 1, transition: { delay: 0, duration: 1, ease: 'circOut' } },
-	exit: { opacity: 0, transition: { delay: 0, duration: 1, ease: 'circOut' } },
+	enter: { opacity: 1, transition: { delay: 0, duration: 0.4, ease: 'circOut' } },
+	exit: { opacity: 0, transition: { delay: 0, duration: 0.2, ease: 'circOut' } },
 };

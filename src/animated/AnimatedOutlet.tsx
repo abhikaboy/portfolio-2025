@@ -7,7 +7,7 @@ export const AnimatedOutlet = (): React.JSX.Element => {
 	const element = useOutlet();
 
 	return (
-		<AnimatePresence mode='popLayout'>
+		<AnimatePresence mode='wait' initial={true}>
 			{element && React.cloneElement(element, { key: location.key })}
 		</AnimatePresence>
 	);

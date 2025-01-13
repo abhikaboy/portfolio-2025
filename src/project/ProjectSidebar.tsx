@@ -21,7 +21,7 @@ export default function ProjectSidebar({ input }: Props) {
 		<Font family='Avenir' weight={250}>
 			<motion.div
 				initial={{ opacity: 0, x: -400 }}
-				animate={{ opacity: 1, x: 0, transition: { ease: 'circOut', delay: 1 } }}
+				animate={{ opacity: 1, x: 0, transition: { ease: 'circOut', delay: 0.5 } }}
 				exit={{ opacity: 0, x: -400, transition: { duration: 0.5, ease: 'circIn', delay: 0.2 } }}
 				transition={{ duration: 0.5 }}
 				style={{

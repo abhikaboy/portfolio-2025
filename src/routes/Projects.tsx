@@ -2,11 +2,10 @@ import React from 'react';
 import topLight from '../assets/lights/Ellipse 3.png';
 import botLight from '../assets/lights/Ellipse 4.png';
 import Font from 'react-font';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import ExperienceBar from '../components/ExperienceBar';
 import { useNavigate } from 'react-router-dom';
-import { containerVariant } from '../main';
-
+import PageTransition from '../animated/PageTransition';
 export default function Projects() {
 	const projectData = [
 		{
@@ -79,14 +78,7 @@ export default function Projects() {
 	];
 	const navigate = useNavigate();
 	return (
-		<motion.div
-			style={{ color: '#fff' }}
-			variants={containerVariant}
-			className='relative'
-			initial='hidden'
-			animate='enter'
-			transition={{ duration: 0.5, type: 'easeInOut' }}
-			exit='exit'>
+		<PageTransition>
 			<motion.div
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1 }}
@@ -156,6 +148,6 @@ export default function Projects() {
 					filter: 'hue-rotate(30deg) saturate(3)',
 				}}
 			/>
-		</motion.div>
+		</PageTransition>
 	);
 }

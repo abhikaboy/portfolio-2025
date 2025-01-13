@@ -12,7 +12,7 @@ export default function ProjectHeader({ img, text }: Props) {
 		<motion.div
 			style={{ width: '100vw' }}
 			initial={{ opacity: 0, y: -800 }}
-			transition={{ duration: 0.5, ease: 'circOut', delay: 0.5 }}
+			transition={{ duration: 0.5, ease: 'circOut' }}
 			animate={{ opacity: 1, y: 0 }}
 			exit={{ opacity: 0, y: -800, transition: { duration: 0.5, ease: 'circIn' } }}>
 			<img src={img} style={{ width: '100%' }} />
