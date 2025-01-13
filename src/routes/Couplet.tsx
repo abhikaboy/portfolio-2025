@@ -12,6 +12,7 @@ import bg2 from '../assets/projects/couplet/bg2.png';
 import screen from '../assets/projects/couplet/cropped-phones.png';
 import { Text } from 'react-font';
 import Back from '../components/Back';
+import { motion } from 'framer-motion';
 
 export default function Couplet() {
 	const sidebarData: Section[] = [
@@ -69,6 +70,7 @@ prominent in the current dating app landscape.
 `,
 		},
 	];
+
 	return (
 		<div style={{ width: '100vw', overflow: 'hidden' }}>
 			<ProjectHeader
@@ -83,7 +85,27 @@ prominent in the current dating app landscape.
 				</div>
 				<ProjectContent input={contentData} />
 			</div>
-			<div style={{ marginTop: '10%' }}>
+			<motion.div
+				style={{ marginTop: '10%' }}
+				initial={{ opacity: 0 }}
+				whileInView={{ opacity: 1, transition: { duration: 1 } }}>
+				<motion.img
+					initial={{ opacity: 1, x: -150, scale: 1.25 }}
+					whileInView={{
+						opacity: 1,
+						x: 150,
+						scale: 1.25,
+						transition: { duration: 4.5, delay: 0, repeat: Infinity, repeatType: 'reverse' },
+					}}
+					exit={{}}
+					src={chain}
+					style={{
+						width: '100%',
+						height: '10%',
+						marginTop: '-5%',
+						transform: 'scale(1.5) translateX(0)',
+					}}
+				/>
 				<LearningOutcome
 					number={'1'}
 					title={`SQL isn't Scary`}
@@ -92,8 +114,24 @@ prominent in the current dating app landscape.
 					background={screens}
 					icon={heart}
 				/>
-			</div>
-			<img src={chain} style={{ width: '100%', height: '10%', marginTop: '-5%' }} />
+			</motion.div>
+			<motion.img
+				initial={{ opacity: 1, x: -150, scale: 1.25 }}
+				whileInView={{
+					opacity: 1,
+					x: 150,
+					scale: 1.25,
+					transition: { duration: 4.5, delay: 0, repeat: Infinity, repeatType: 'reverse' },
+				}}
+				exit={{}}
+				src={chain}
+				style={{
+					width: '100%',
+					height: '10%',
+					marginTop: '-5%',
+					transform: 'scale(1.5) translateX(0)',
+				}}
+			/>
 			<div style={{ marginTop: '-5%' }}>
 				<LearningOutcome
 					number={'2'}
@@ -103,7 +141,29 @@ prominent in the current dating app landscape.
 					background={bg2}
 					icon={guy}
 				/>
-				<img src={chain} style={{ width: '100%', height: '10%', marginTop: '-5%' }} />
+				<motion.img
+					initial={{ opacity: 1, x: 150, scale: 1.25 }}
+					whileInView={{
+						opacity: 1,
+						x: -150,
+						scale: 1.25,
+						transition: {
+							duration: 4.5,
+							delay: 0,
+							repeat: Infinity,
+							repeatType: 'reverse',
+							ease: 'linear',
+						},
+					}}
+					exit={{}}
+					src={chain}
+					style={{
+						width: '100%',
+						height: '10%',
+						marginTop: '-5%',
+						transform: 'scale(1.5) translateX(0)',
+					}}
+				/>{' '}
 				<div
 					style={{
 						width: '100%',
@@ -111,7 +171,12 @@ prominent in the current dating app landscape.
 						backgroundColor: '#000',
 						marginTop: '5%',
 					}}>
-					<img src={screen} style={{ width: '100%' }} />
+					<motion.img
+						initial={{ opacity: 0, y: 200 }}
+						whileInView={{ opacity: 1, y: 0, transition: { duration: 0.5, ease: 'circOut' } }}
+						src={screen}
+						style={{ width: '100%' }}
+					/>
 				</div>
 			</div>
 		</div>
@@ -141,8 +206,19 @@ function LearningOutcome({
 				height: '90vh',
 			}}>
 			<div style={{ display: 'flex', flexDirection: 'row' }}>
-				<img src={icon} style={{ width: '60%', height: '20%', marginLeft: '-10%', marginTop: '-5%' }} />
-				<div
+				<motion.img
+					initial={{ opacity: 0, filter: 'hue-rotate(0deg) brightness(1)' }}
+					whileInView={{
+						opacity: 1,
+						filter: 'hue-rotate(0deg) brightness(1)',
+						transition: { duration: 0.5, delay: 0.5 },
+					}}
+					src={icon}
+					style={{ width: '60%', height: '20%', marginLeft: '-10%', marginTop: '-5%' }}
+				/>
+				<motion.div
+					initial={{ opacity: 0, x: 200 }}
+					whileInView={{ opacity: 1, x: 0, transition: { duration: 0.5, ease: 'circOut' } }}
 					style={{
 						display: 'flex',
 						flexDirection: 'column',
@@ -166,7 +242,7 @@ function LearningOutcome({
 					<Text family='Avenir' style={{ fontSize: 20, marginTop: 16 }}>
 						{content2}
 					</Text>
-				</div>
+				</motion.div>
 			</div>
 		</div>
 	);
