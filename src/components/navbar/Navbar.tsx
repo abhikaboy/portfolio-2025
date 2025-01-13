@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Font from 'react-font';
 
 import Navlink from './Navlink';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 export default function Navbar() {
 	const [show, setShow] = useState(true);

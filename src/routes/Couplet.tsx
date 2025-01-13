@@ -168,7 +168,7 @@ function LearningOutcome({
 						gap: 0,
 					}}>
 					<Text family='Avenir' style={{ fontSize: 20, margin: '0' }}>
-						Learning Outcomes #{number}
+						{'Learning Outcomes #' + number}
 					</Text>
 					<Text family='Avenir' weight={700} style={{ fontSize: 40, margin: '0' }}>
 						{title}

@@ -1,5 +1,6 @@
 import React from 'react';
 import Font from 'react-font';
+import { Section } from './ProjectContent';
 
 type SectionProps = {
 	title: string;
@@ -8,12 +9,6 @@ type SectionProps = {
 type ListSectionProps = {
 	title: string;
 	content: string[];
-};
-
-export type Section = {
-	title: string;
-	type: 'Single' | 'List';
-	content: string | string[];
 };
 
 type Props = {
@@ -38,7 +33,7 @@ export default function ProjectSidebar({ input }: Props) {
 						}}>
 						{item.type === 'Single' ? (
 							// @ts-expect-error meow
-							<Section title={item.title} content={item.content} />
+							<SectionComp title={item.title} content={item.content} />
 						) : (
 							// @ts-expect-error meow
 							<ListSection title={item.title} content={item.content} />
@@ -50,7 +45,7 @@ export default function ProjectSidebar({ input }: Props) {
 	);
 }
 
-function Section({ title, content }: SectionProps) {
+function SectionComp({ title, content }: SectionProps) {
 	return (
 		<div>
 			<div style={{ color: '#CECECE', paddingBottom: 4 }}>{title}</div>

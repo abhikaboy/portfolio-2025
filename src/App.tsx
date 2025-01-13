@@ -24,7 +24,7 @@ function App() {
 	return (
 		<div style={{ backgroundColor: '#000', height: '100vh', minWidth: '100vw' }}>
 			<Navbar />
-			<HomeBody playing={playing} />
+			<HomeBody />
 			<div style={{ position: 'fixed', top: 0 }}>
 				<HomeLights setPlaying={setPlaying} playing={playing} />
 			</div>

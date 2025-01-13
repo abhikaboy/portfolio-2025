@@ -3,7 +3,7 @@ import HomeText from './HomeText';
 import Font, { Text } from 'react-font';
 import './backgrounds/Lights.css';
 
-export default function HomeBody({ playing }: { playing: boolean }) {
+export default function HomeBody() {
 	const [scroll, setScroll] = useState(0);
 
 	const handleScroll = () => {

@@ -58,6 +58,7 @@ export default function Everything() {
 		if (selected === -1) return;
 		console.log(selected);
 		async function fetchData() {
+			console.log(showLeft);
 			setDocument(await fetch(records[selected].data).then(async (res) => await res.text()));
 			setTimeout(() => setLoading(false), 100);
 			setShowLeft(false);
