@@ -1,5 +1,7 @@
 import React from 'react';
 import { Text } from 'react-font';
+import { motion } from 'framer-motion';
+
 type Props = {
 	img: string;
 	text: string;
@@ -7,7 +9,12 @@ type Props = {
 
 export default function ProjectHeader({ img, text }: Props) {
 	return (
-		<div style={{ width: '100vw' }}>
+		<motion.div
+			style={{ width: '100vw' }}
+			initial={{ opacity: 0, y: -800 }}
+			transition={{ duration: 0.5, ease: 'circOut', delay: 0.5 }}
+			animate={{ opacity: 1, y: 0 }}
+			exit={{ opacity: 0, y: -800, transition: { duration: 0.5, ease: 'circIn' } }}>
 			<img src={img} style={{ width: '100%' }} />
 			<Text
 				family='DM Sans'
@@ -23,6 +30,6 @@ export default function ProjectHeader({ img, text }: Props) {
 				}}>
 				{text}
 			</Text>
-		</div>
+		</motion.div>
 	);
 }

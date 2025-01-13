@@ -10,11 +10,10 @@ import chain from '../assets/projects/couplet/ticketChain.png';
 import guy from '../assets/projects/couplet/couplet-guy.png';
 import bg2 from '../assets/projects/couplet/bg2.png';
 import screen from '../assets/projects/couplet/cropped-phones.png';
-
-import { useNavigate } from 'react-router-dom';
 import { Text } from 'react-font';
+import Back from '../components/Back';
+
 export default function Couplet() {
-	const navigate = useNavigate();
 	const sidebarData: Section[] = [
 		{
 			title: 'Organization',
@@ -77,19 +76,7 @@ prominent in the current dating app landscape.
 				text='Helping people find authentic real-world connections while supporting non-profit arts businesses in
               Boston'
 			/>
-			<div
-				onClick={() => navigate('./Projects')}
-				style={{
-					backgroundColor: '#00000040',
-					position: 'fixed',
-					top: '5%',
-					left: '5%',
-					padding: '10px',
-					borderRadius: '10px',
-					color: '#fff',
-				}}>
-				{'-'}
-			</div>
+			<Back />
 			<div style={{ paddingLeft: '10%', marginTop: '10%', display: 'flex', flexDirection: 'row', gap: '10%' }}>
 				<div style={{ width: '50vw' }}>
 					<ProjectSidebar input={sidebarData} />

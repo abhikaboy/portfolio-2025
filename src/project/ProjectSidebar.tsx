@@ -1,6 +1,7 @@
 import React from 'react';
 import Font from 'react-font';
 import { Section } from './ProjectContent';
+import { motion } from 'framer-motion';
 
 type SectionProps = {
 	title: string;
@@ -18,7 +19,11 @@ type Props = {
 export default function ProjectSidebar({ input }: Props) {
 	return (
 		<Font family='Avenir' weight={250}>
-			<div
+			<motion.div
+				initial={{ opacity: 0, x: -400 }}
+				animate={{ opacity: 1, x: 0, transition: { ease: 'circOut', delay: 1 } }}
+				exit={{ opacity: 0, x: -400, transition: { duration: 0.5, ease: 'circIn', delay: 0.2 } }}
+				transition={{ duration: 0.5 }}
 				style={{
 					display: 'flex',
 					fontSize: 16,
@@ -40,7 +45,7 @@ export default function ProjectSidebar({ input }: Props) {
 						)}
 					</div>
 				))}
-			</div>
+			</motion.div>
 		</Font>
 	);
 }

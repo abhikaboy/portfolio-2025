@@ -1,23 +1,54 @@
 import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Experiences from './routes/Experiences.tsx';
 import Projects from './routes/Projects.tsx';
-import Navbar from './components/navbar/Navbar.tsx';
 import Everything from './routes/Everything.tsx';
 import Couplet from './routes/Couplet.tsx';
 import Platnm from './routes/Platnm.tsx';
-createRoot(document.getElementById('root')!).render(
-	<Router>
-		<Navbar />
-		<Routes>
-			<Route path='/' element={<App />} />
-			<Route path='/Home' element={<App />} />
-			<Route path='/Experiences' element={<Experiences />} />
-			<Route path='/Projects' element={<Projects />} />
-			<Route path='/Projects/Couplet' element={<Couplet />} />
-			<Route path='/Projects/Platnm' element={<Platnm />} />
-			<Route path='/Everything' element={<Everything />} />
-		</Routes>
-	</Router>,
-);
+import { OutletWrapper } from './OutletWrapper.tsx';
+
+const router = createBrowserRouter([
+	{
+		path: '/',
+		element: <OutletWrapper />,
+		children: [
+			{
+				path: '/',
+				element: <App />,
+			},
+			{
+				path: '/Home',
+				element: <App />,
+			},
+			{
+				path: '/Projects',
+				element: <Projects />,
+			},
+			{
+				path: '/Experiences',
+				element: <Experiences />,
+			},
+			{
+				path: '/Everything',
+				element: <Everything />,
+			},
+			{
+				path: '/Projects/Couplet',
+				element: <Couplet />,
+			},
+			{
+				path: 'Projects/Platnm',
+				element: <Platnm />,
+			},
+		],
+	},
+]);
+
+createRoot(document.getElementById('root')!).render(<RouterProvider router={router} />);
+
+export const containerVariant = {
+	hidden: { opacity: 0 },
+	enter: { opacity: 1, transition: { delay: 0, duration: 1, ease: 'circOut' } },
+	exit: { opacity: 0, transition: { delay: 0, duration: 1, ease: 'circOut' } },
+};

@@ -2,3 +2,13 @@ body {
 	margin: 0;
 	background-color: #000;
 }
+
+.back:hover {
+	background-color: #00000080;
+	transition: all 0.2s ease-in-out;
+	cursor: pointer;
+}
+
+.back {
+	background-color: #00000040;
+}

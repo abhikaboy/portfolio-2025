@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Font from 'react-font';
+import { motion } from 'framer-motion';
 
 type SectionProps = {
 	title: string;
@@ -47,7 +48,11 @@ export default function ProjectContent({ input }: Props) {
 	}, [input]);
 	return (
 		<Font family='Avenir' weight={250}>
-			<div
+			<motion.div
+				initial={{ opacity: 0, x: 400 }}
+				animate={{ opacity: 1, x: 0, transition: { ease: 'circOut', delay: 1.2 } }}
+				exit={{ opacity: 0, x: 400, transition: { duration: 0.6, ease: 'circIn', delay: 0.2 } }}
+				transition={{ duration: 0.5 }}
 				style={{
 					display: 'flex',
 					fontSize: 20,
@@ -56,7 +61,7 @@ export default function ProjectContent({ input }: Props) {
 					marginRight: '10%',
 				}}>
 				{items.map((item) => item)}
-			</div>
+			</motion.div>
 		</Font>
 	);
 }

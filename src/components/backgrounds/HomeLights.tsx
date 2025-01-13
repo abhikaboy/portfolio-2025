@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import top from '../../assets/lights/Ellipse 1.png';
 import topRight from '../../assets/lights/Ellipse 2.png';
 import botLeft from '../../assets/lights/Star 1.png';
@@ -9,7 +9,7 @@ import click from '../../assets/sound/click.wav';
 
 import red from '../../assets/lights/red.png';
 import headphone from '../../assets/headphone.png';
-import { AnimatePresence, motion } from 'motion/react';
+import { motion } from 'motion/react';
 
 import './Lights.css';
 import Font from 'react-font';
@@ -43,95 +43,93 @@ export default function HomeLights({ setPlaying, playing }: Props) {
 
 	return (
 		<div style={{ position: 'absolute', width: '100vw', height: '100vh', overflow: 'clip', top: 0 }}>
-			<AnimatePresence>
-				<div className='front'>
-					<motion.div
-						animate={{ opacity: 1 }}
-						initial={{ opacity: 0 }}
-						exit={{ opacity: 0 }}
-						key='modal'
-						transition={{ duration: 0.5, delay: 1 }}>
-						{popup && (
-							<motion.div style={customStyles}>
-								<Font family='Instrument Sans'>
+			<div className='front'>
+				<motion.div
+					animate={{ opacity: 1 }}
+					initial={{ opacity: 0 }}
+					exit={{ opacity: 0 }}
+					key='modal'
+					transition={{ duration: 0.5, delay: 1 }}>
+					{popup && (
+						<motion.div style={customStyles}>
+							<Font family='Instrument Sans'>
+								<div
+									style={{
+										flex: 1,
+										display: 'flex',
+										flexDirection: 'row',
+										gap: '50px',
+										color: '#fff',
+									}}>
+									<img src={headphone} alt='red' style={{ width: '200px', height: '200px' }} />
 									<div
 										style={{
-											flex: 1,
 											display: 'flex',
-											flexDirection: 'row',
-											gap: '50px',
-											color: '#fff',
+											flexDirection: 'column',
+											gap: '10px',
+											margin: 'auto',
 										}}>
-										<img src={headphone} alt='red' style={{ width: '200px', height: '200px' }} />
-										<div
-											style={{
-												display: 'flex',
-												flexDirection: 'column',
-												gap: '10px',
-												margin: 'auto',
-											}}>
-											<div style={{ fontWeight: 900, fontSize: '3rem' }}>Immersion</div>
-											<div>
-												A core principle behind this portfolio is the idea of audio immersion.
-												We'd highly recommend putting on some headphones. Thanks!
-											</div>
-											<div>
-												<motion.button
-													onMouseEnter={() => playHover()}
-													whileHover={{
-														scale: 1.1,
-														backgroundColor: '#00bbff40',
-														cursor: 'pointer',
-													}}
-													style={{
-														padding: '10px 24px 10px 24px',
-														borderRadius: '10px',
-														backgroundColor: '#00bbff00',
-														border: '1px solid #00bbff',
-														color: '#fff',
-													}}
-													onClick={() => {
-														if (!playing) {
-															playClick();
-															setPopup(false);
+										<div style={{ fontWeight: 900, fontSize: '3rem' }}>Immersion</div>
+										<div>
+											A core principle behind this portfolio is the idea of audio immersion. We'd
+											highly recommend putting on some headphones. Thanks!
+										</div>
+										<div>
+											<motion.button
+												onMouseEnter={() => playHover()}
+												whileHover={{
+													scale: 1.1,
+													backgroundColor: '#00bbff40',
+													cursor: 'pointer',
+												}}
+												style={{
+													padding: '10px 24px 10px 24px',
+													borderRadius: '10px',
+													backgroundColor: '#00bbff00',
+													border: '1px solid #00bbff',
+													color: '#fff',
+												}}
+												onClick={() => {
+													if (!playing) {
+														playClick();
+														setPopup(false);
+														setTimeout(() => {
+															playSong();
+															setPlaying(true);
 															setTimeout(() => {
-																playSong();
-																setPlaying(true);
-																setTimeout(() => {
-																	setPulseSize(true);
-																}, 15000);
-															}, 500);
-														}
-													}}>
-													I'm Plugged In!
-												</motion.button>
-											</div>
+																setPulseSize(true);
+															}, 15000);
+														}, 500);
+													}
+												}}>
+												I'm Plugged In!
+											</motion.button>
 										</div>
 									</div>
-								</Font>
-							</motion.div>
-						)}
-					</motion.div>
-				</div>
-				{popup && (
-					<motion.div
-						animate={{ opacity: 1 }}
-						initial={{ opacity: 0 }}
-						exit={{ opacity: 0 }}
-						key='bg'
-						transition={{ ease: 'easeIn', duration: 0.5 }}
-						style={{
-							width: '100vw',
-							height: '100vh',
-							backgroundColor: 'rgba(0,0,0,0.9)',
-							zIndex: 2,
-							position: 'absolute',
-							top: 0,
-							left: 0,
-						}}
-					/>
-				)}
-			</AnimatePresence>
+								</div>
+							</Font>
+						</motion.div>
+					)}
+				</motion.div>
+			</div>
+			{popup && (
+				<motion.div
+					animate={{ opacity: 1 }}
+					initial={{ opacity: 0 }}
+					exit={{ opacity: 0 }}
+					key='bg'
+					transition={{ ease: 'easeIn', duration: 0.5 }}
+					style={{
+						width: '100vw',
+						height: '100vh',
+						backgroundColor: 'rgba(0,0,0,0.9)',
+						zIndex: 2,
+						position: 'absolute',
+						top: 0,
+						left: 0,
+					}}
+				/>
+			)}
 			<img src={top} alt='top' style={{ position: 'absolute', top: '-100px', left: '100' }} />
 			<img src={topRight} alt='top' style={{ position: 'absolute', top: '-250px', right: '0' }} />
 			<img src={top} alt='top' className='pulse' style={{ position: 'absolute', top: '500', right: '0' }} />

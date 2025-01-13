@@ -2,9 +2,10 @@ import React from 'react';
 import topLight from '../assets/lights/Ellipse 3.png';
 import botLight from '../assets/lights/Ellipse 4.png';
 import Font from 'react-font';
-import { AnimatePresence, motion } from 'motion/react';
+import { motion } from 'motion/react';
 import ExperienceBar from '../components/ExperienceBar';
 import { useNavigate } from 'react-router-dom';
+import { containerVariant } from '../main';
 
 export default function Projects() {
 	const projectData = [
@@ -78,78 +79,83 @@ export default function Projects() {
 	];
 	const navigate = useNavigate();
 	return (
-		<AnimatePresence>
-			<div style={{ color: '#fff' }}>
-				<motion.div
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					exit={{ opacity: 0 }}
-					transition={{ duration: 1 }}>
-					<img
-						src={topLight}
-						alt='top'
-						style={{
-							width: '100vw',
-							top: '0',
-							position: 'absolute',
-							filter: 'hue-rotate(90deg) saturate(3)',
-						}}
-					/>
-				</motion.div>
-				<motion.div
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					exit={{ opacity: 0 }}
-					transition={{ duration: 1 }}>
-					<img
-						src={topLight}
-						alt='top'
-						style={{
-							width: '100vw',
-							top: '100vh',
-							right: '-10vw',
-							position: 'absolute',
-							transform: 'rotate(90deg)',
-							filter: 'hue-rotate(90deg) saturate(5) blur(100px)',
-						}}
-					/>
-				</motion.div>
-				<Font family='Instrument Sans'>
-					<div style={{ textAlign: 'center', fontSize: '2rem', marginTop: '12%', fontWeight: 'bold' }}>
-						<div style={{ fontSize: '1rem', fontWeight: '400' }}>03.</div>
-						Projects
-					</div>
-					<div style={{ textAlign: 'center', marginTop: '2%' }}>Showing {projectData.length} projects</div>
-					<div
-						style={{
-							display: 'flex',
-							flexDirection: 'column',
-							gap: '10px',
-							marginTop: '3%',
-							paddingLeft: '20%',
-							paddingRight: '20%',
-						}}>
-						{projectData.map(({ place, title, description }, index) => (
-							<ExperienceBar
-								place={place}
-								title={title}
-								description={description}
-								key={index}
-								onClick={() => navigate(`./${place.replace(' ', '')}`)}
-							/>
-						))}
-					</div>
-				</Font>
+		<motion.div
+			style={{ color: '#fff' }}
+			variants={containerVariant}
+			className='relative'
+			initial='hidden'
+			animate='enter'
+			transition={{ duration: 0.5, type: 'easeInOut' }}
+			exit='exit'>
+			<motion.div
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				exit={{ opacity: 0 }}
+				transition={{ duration: 1, delay: 0.2 }}>
 				<img
-					src={botLight}
+					src={topLight}
+					alt='top'
 					style={{
 						width: '100vw',
+						top: '0',
 						position: 'absolute',
-						transform: 'translateY(-90%)',
-						filter: 'hue-rotate(30deg) saturate(3)',
+						filter: 'hue-rotate(90deg) saturate(3)',
 					}}
 				/>
-			</div>
-		</AnimatePresence>
+			</motion.div>
+			<motion.div
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				exit={{ opacity: 0 }}
+				transition={{ duration: 1 }}>
+				<img
+					src={topLight}
+					alt='top'
+					style={{
+						width: '100vw',
+						top: '100vh',
+						right: '-10vw',
+						position: 'absolute',
+						transform: 'rotate(90deg)',
+						filter: 'hue-rotate(90deg) saturate(5) blur(100px)',
+					}}
+				/>
+			</motion.div>
+			<Font family='Instrument Sans'>
+				<div style={{ textAlign: 'center', fontSize: '2rem', marginTop: '12%', fontWeight: 'bold' }}>
+					<div style={{ fontSize: '1rem', fontWeight: '400' }}>03.</div>
+					Projects
+				</div>
+				<div style={{ textAlign: 'center', marginTop: '2%' }}>Showing {projectData.length} projects</div>
+				<div
+					style={{
+						display: 'flex',
+						flexDirection: 'column',
+						gap: '10px',
+						marginTop: '3%',
+						paddingLeft: '20%',
+						paddingRight: '20%',
+					}}>
+					{projectData.map(({ place, title, description }, index) => (
+						<ExperienceBar
+							place={place}
+							title={title}
+							description={description}
+							key={index}
+							onClick={() => navigate(`./${place.replace(' ', '')}`)}
+						/>
+					))}
+				</div>
+			</Font>
+			<img
+				src={botLight}
+				style={{
+					width: '100vw',
+					position: 'absolute',
+					transform: 'translateY(-90%)',
+					filter: 'hue-rotate(30deg) saturate(3)',
+				}}
+			/>
+		</motion.div>
 	);
 }
