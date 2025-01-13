@@ -1,43 +1,32 @@
 import React from 'react';
 import ProjectHeader from '../project/ProjectHeader';
 import ProjectSidebar from '../project/ProjectSidebar';
-import header from '../assets/projects/platnm/platnm-header.png';
+import header from '../assets/projects/musicmantle/musicmantle-header.png';
 import { Section } from '../project/ProjectContent';
 import ProjectContent from '../project/ProjectContent';
 import Back from '../components/Back';
 
-export default function Platnm() {
+export default function MusicMantle() {
 	const sidebarData: Section[] = [
-		{
-			title: 'Organization',
-			type: 'Single',
-			content: 'Generate Product Development Studio',
-		},
 		{
 			title: 'Timeline',
 			type: 'Single',
-			content: 'Sept - Dec 2024',
+			content: 'December 2024',
 		},
 		{
 			title: 'Role',
 			type: 'Single',
-			content: 'Product Manager',
+			content: 'Engineer',
 		},
 		{
 			title: 'Team',
 			type: 'List',
-			content: [
-				'(1) Product Manager',
-				'(2) Technical Leads',
-				'(6) Software Engineers',
-				'(1) Design Lead',
-				'(4) UI/UX Designers',
-			],
+			content: ['(2) Software Engineer'],
 		},
 		{
 			title: 'Stack',
 			type: 'List',
-			content: ['Go', 'React Native', 'Expo', 'PostgreSQL', 'Nix', 'Supabase'],
+			content: ['Python', 'MongoDB', 'FastAPI', 'React', 'Tailwind CSS'],
 		},
 	];
 	const contentData: Section[] = [
@@ -68,10 +57,7 @@ export default function Platnm() {
 
 	return (
 		<div style={{ width: '100vw', overflow: 'hidden' }}>
-			<ProjectHeader
-				img={header}
-				text='Giving music lovers am platform to rate, review, and recommend all their favorite songs'
-			/>
+			<ProjectHeader img={header} text='An interactive guessing game powered by semantic search' />
 			<Back />
 			<div style={{ paddingLeft: '10%', marginTop: '10%', display: 'flex', flexDirection: 'row', gap: '10%' }}>
 				<div style={{ width: '50vw' }}>

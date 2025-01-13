@@ -3,7 +3,8 @@ import './App.css';
 import HomeLights from './components/backgrounds/HomeLights';
 import HomeBody from './components/HomeBody';
 
-import PageTransition from './animated/PageTransition';
+import { motion } from 'framer-motion';
+import { containerVariant } from './main.tsx';
 
 function App() {
 	const [playing, setPlaying] = useState(false);
@@ -22,14 +23,14 @@ function App() {
 	}, []);
 
 	return (
-		<PageTransition>
+		<motion.div variants={containerVariant} initial='hidden' animate='enter' exit='exit'>
 			<div style={{ backgroundColor: '#000', height: '100vh', minWidth: '100vw' }}>
 				<HomeBody />
 				<div style={{ position: 'fixed', top: 0 }}>
 					<HomeLights setPlaying={setPlaying} playing={playing} />
 				</div>
 			</div>
-		</PageTransition>
+		</motion.div>
 	);
 }
 

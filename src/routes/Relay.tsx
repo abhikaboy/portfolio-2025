@@ -1,12 +1,12 @@
 import React from 'react';
 import ProjectHeader from '../project/ProjectHeader';
 import ProjectSidebar from '../project/ProjectSidebar';
-import header from '../assets/projects/platnm/platnm-header.png';
+import header from '../assets/projects/relay/relay-header.png';
 import { Section } from '../project/ProjectContent';
 import ProjectContent from '../project/ProjectContent';
 import Back from '../components/Back';
 
-export default function Platnm() {
+export default function Relay() {
 	const sidebarData: Section[] = [
 		{
 			title: 'Organization',
@@ -70,7 +70,7 @@ export default function Platnm() {
 		<div style={{ width: '100vw', overflow: 'hidden' }}>
 			<ProjectHeader
 				img={header}
-				text='Giving music lovers am platform to rate, review, and recommend all their favorite songs'
+				text='Connecting incompatible ecosystems of devices with an intutive system to share media'
 			/>
 			<Back />
 			<div style={{ paddingLeft: '10%', marginTop: '10%', display: 'flex', flexDirection: 'row', gap: '10%' }}>

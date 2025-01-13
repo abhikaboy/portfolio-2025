@@ -6,7 +6,9 @@ import Projects from './routes/Projects.tsx';
 import Everything from './routes/Everything.tsx';
 import Couplet from './routes/Couplet.tsx';
 import Platnm from './routes/Platnm.tsx';
+import MusicMantle from './routes/MusicMantle.tsx';
 import { OutletWrapper } from './animated/OutletWrapper.tsx';
+import Relay from './routes/Relay.tsx';
 
 const router = createBrowserRouter([
 	{
@@ -40,6 +42,14 @@ const router = createBrowserRouter([
 			{
 				path: 'Projects/Platnm',
 				element: <Platnm />,
+			},
+			{
+				path: 'Projects/MusicMantle',
+				element: <MusicMantle />,
+			},
+			{
+				path: 'Projects/Relay',
+				element: <Relay />,
 			},
 		],
 	},
