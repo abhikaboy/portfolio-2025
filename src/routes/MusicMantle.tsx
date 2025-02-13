@@ -33,24 +33,24 @@ export default function MusicMantle() {
 		{
 			title: 'Introduction',
 			type: 'Single',
-			content:
-				'Platnm is a project I led during my time as a Product Lead at Generate. Overall, my biggest takeaway was about leadership and bringing a team together to get stuff done. ',
+			content: `MusicMantle was a project for Northeastern's CS4100 Artificial Intelligence course. The core project is a guessing game where there is a randomly chosen music artist and the player must guess who it is using semantic search terms or other artists.
+			The website will rank how close each guess is between 0 and 1 and will guide users from there.`,
 		},
 		{
-			title: 'Overview',
+			title: 'Process',
 			type: 'Header',
 			content: '',
 		},
 		{
-			title: 'Spotify API Integration',
+			title: 'Data Collection & Filtering',
 			type: 'Single',
-			content: `Platnm has an internal catalogue of songs that we’re able to pull and populate via the Spotify API. We’re polling new albums and songs to build out database and dynamically fetching when a user requests media data we dont immediately have. 
+			content: `Our data was sourced from Kaggle and specifically from the .last fm dataset. However, the dataset was not cleaned and we had to do a lot of manual filtering to get the data to a usable format. We paid attention to important details like how large the artists were, their home country, musical catalogue, and user defined tags.
 `,
 		},
 		{
-			title: 'Product Identity',
+			title: 'Vector Search',
 			type: 'Single',
-			content: `Platnm has an internal catalogue of songs that we’re able to pull and populate via the Spotify API. We’re polling new albums and songs to build out database and dynamically fetching when a user requests media data we dont immediately have. 
+			content: `After using an OpenAI model to create embeddings based off of all the data we could collection from the artists. We used MongoDB's vector search capabilities to calculate how far a user's query is from our actual hidden artist and ranked the relavence to signify how close the user's guess was to the actual artist.
 `,
 		},
 	];
@@ -65,6 +65,21 @@ export default function MusicMantle() {
 				</div>
 				<ProjectContent input={contentData} />
 			</div>
+			<iframe
+				style={{
+					width: '100%',
+					marginLeft: '10%',
+					marginRight: '10%',
+					marginTop: '10%',
+					height: '70vh',
+					border: 'none',
+				}}
+				src='https://relay-file-upload.s3-us-east-2.amazonaws.com/to8dixn3fheScreen_Recording_2024-12-07_at_11.28.07_AM.qt'></iframe>
+			<div
+				style={{
+					height: '30vh',
+				}}
+			/>
 		</div>
 	);
 }

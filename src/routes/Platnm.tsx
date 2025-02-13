@@ -61,7 +61,8 @@ export default function Platnm() {
 		{
 			title: 'Product Identity',
 			type: 'Single',
-			content: `Platnm has an internal catalogue of songs that we’re able to pull and populate via the Spotify API. We’re polling new albums and songs to build out database and dynamically fetching when a user requests media data we dont immediately have. 
+			content: `
+			Platnm is the one-stop shop for all matters related to musical discorse via musical ratings, reviews, and recommendations. A core focus of the scope of the product has been Platnm's social features and how can we create a product that promotes muscial discussion. A big part of that led to creating features related to personalization and facilitating human recommendations.
 `,
 		},
 	];
