@@ -69,8 +69,8 @@ export default function ProjectContent({ input }: Props) {
 function Section({ title, content }: SectionProps) {
 	return (
 		<div>
-			<div style={{ color: '#CECECE', paddingBottom: 4 }}>{title}</div>
-			<div style={{ color: 'white', paddingBottom: 24 }}>{content}</div>
+			<div style={{ color: 'white', paddingBottom: 4, fontWeight: 700 }}>{title}</div>
+			<div style={{ color: '#EEE', paddingBottom: 24, fontWeight: 200, fontSize: 18 }}>{content}</div>
 		</div>
 	);
 }
@@ -91,7 +91,7 @@ function ListSection({ title, content }: ListSectionProps) {
 function Header({ title }: { title: string }) {
 	return (
 		<div>
-			<div style={{ color: '#fff', paddingBottom: 8, paddingTop: 16, fontSize: 28, fontWeight: 700 }}>
+			<div style={{ color: '#fff', paddingBottom: 20, paddingTop: 16, fontSize: 28, fontWeight: 700 }}>
 				{title}
 			</div>
 		</div>

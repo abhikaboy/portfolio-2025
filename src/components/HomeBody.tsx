@@ -73,7 +73,7 @@ export default function HomeBody() {
 			</div>
 			<HomeText>Let me tell you about myself</HomeText>
 			<HomeText>My personal philosophy is basically derived from One Piece:</HomeText>
-			<HomeText>[one piece quote]</HomeText>
+			<HomeText>[one piece quote work in progress]</HomeText>
 			<HomeText>
 				That being said, I’m 19 and I have a lot to learn - and I love doing exactly that. Put on your
 				headphones and enjoy the rest :)

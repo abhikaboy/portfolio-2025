@@ -9,6 +9,7 @@ import Platnm from './routes/Platnm.tsx';
 import MusicMantle from './routes/MusicMantle.tsx';
 import { OutletWrapper } from './animated/OutletWrapper.tsx';
 import Relay from './routes/Relay.tsx';
+import Roadar from './routes/Roadar.tsx';
 
 const router = createBrowserRouter([
 	{
@@ -49,6 +50,14 @@ const router = createBrowserRouter([
 			},
 			{
 				path: 'Projects/Relay',
+				element: <Relay />,
+			},
+			{
+				path: 'Projects/Roadar',
+				element: <Roadar />,
+			},
+			{
+				path: 'Projects/CollaborativeSpreadsheet',
 				element: <Relay />,
 			},
 		],

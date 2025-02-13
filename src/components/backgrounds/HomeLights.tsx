@@ -22,7 +22,7 @@ const customStyles = {
 	bottom: 'auto',
 	marginRight: '-50%',
 	transform: 'translate(-50%, -50%)',
-	backgroundColor: '#000014',
+	backgroundColor: '#000009',
 	padding: '5%',
 	borderRadius: '10px',
 	width: '50%',
@@ -85,8 +85,9 @@ export default function HomeLights({ setPlaying, playing }: Props) {
 												style={{
 													padding: '10px 24px 10px 24px',
 													borderRadius: '10px',
+													marginTop: '12px',
 													backgroundColor: '#00bbff00',
-													border: '1px solid #00bbff',
+													border: '2px solid #00bbff70',
 													color: '#fff',
 												}}
 												onClick={() => {

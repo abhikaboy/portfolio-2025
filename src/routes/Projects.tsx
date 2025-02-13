@@ -14,6 +14,11 @@ export default function Projects() {
 			description: 'A dating app to match users based on events and real experiences',
 		},
 		{
+			place: 'Roadar',
+			title: 'React Native, Expo, Golang, MongoDB, Web Sockets',
+			description: 'A Crowdsourced Roadside Assistance Uber-Styled Mobile App',
+		},
+		{
 			place: 'Platnm',
 			title: 'React Native, Expo, Golang, Postgres, Supabase',
 			description: 'The one-stop shop for all musical discourse',
