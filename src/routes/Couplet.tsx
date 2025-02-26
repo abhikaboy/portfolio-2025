@@ -203,9 +203,20 @@ function LearningOutcome({
 			style={{
 				backgroundImage: `url(${background})`,
 				width: '100%',
+				justifyContent: 'center',
+				alignItems: 'center',
+				flex: 1,
+				flexDirection: 'row',
 				height: '90vh',
 			}}>
-			<div style={{ display: 'flex', flexDirection: 'row' }}>
+			<div
+				style={{
+					display: 'flex',
+					flexDirection: 'row',
+					justifyContent: 'center',
+					alignItems: 'center',
+					gap: '5%',
+				}}>
 				<motion.img
 					initial={{ opacity: 0, filter: 'hue-rotate(0deg) brightness(1)' }}
 					whileInView={{
@@ -214,7 +225,7 @@ function LearningOutcome({
 						transition: { duration: 0.5, delay: 0.5 },
 					}}
 					src={icon}
-					style={{ width: '60%', height: '20%', marginLeft: '-10%', marginTop: '-5%' }}
+					style={{ width: '100%', height: '100%', marginLeft: '0%', marginTop: '5%' }}
 				/>
 				<motion.div
 					initial={{ opacity: 0, x: 200 }}
