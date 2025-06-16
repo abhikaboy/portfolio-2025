@@ -5,11 +5,12 @@ import Font from 'react-font';
 import ExperienceBar from '../components/ExperienceBar';
 import PageTransition from '../animated/PageTransition';
 import { motion } from 'framer-motion';
+import '../components/backgrounds/Lights.css';
 
 export default function Experiences() {
 	return (
-		<PageTransition>
-			<motion.div style={{ color: '#fff' }}>
+		<PageTransition pageName='Experiences'>
+			<motion.div style={{ color: '#fff', top: '0px' }}>
 				<motion.div
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
@@ -18,7 +19,15 @@ export default function Experiences() {
 					<img
 						src={topLight}
 						alt='top'
-						style={{ width: '100vw', top: '0', position: 'absolute', filter: 'hue-rotate(20deg)' }}
+						className='pulseOpacity'
+						style={{
+							width: '100vw',
+							top: 0,
+							left: 0,
+							position: 'fixed',
+							zIndex: 10,
+							filter: 'hue-rotate(20deg)',
+						}}
 					/>
 				</motion.div>
 				<Font family='Instrument Sans'>
@@ -37,8 +46,8 @@ export default function Experiences() {
 						}}>
 						<ExperienceBar
 							place='MongoDB Inc.'
-							title='Incoming Software Engineer Intern'
-							description='Team N/A'
+							title='Software Engineer Intern'
+							description='Atlas Stream Processing (Engine) -> Building a new Query Operator to improve lookup performance in Stream Processing pipelines'
 						/>
 						<ExperienceBar
 							place='Generate Product Development Studio'
@@ -72,12 +81,16 @@ export default function Experiences() {
 						/>
 						<ExperienceBar
 							place='FIRST Robotics'
-							title='Software & Stratefy Lead'
+							title='Software & Strategy Lead'
 							description='Building World Class Robotics Software'
 						/>
 					</div>
 				</Font>
-				<img src={botLight} style={{ width: '100vw', position: 'absolute', top: '80vh' }} />
+				<img
+					src={botLight}
+					className='pulseOpacity'
+					style={{ width: '100vw', position: 'absolute', top: '80vh' }}
+				/>
 			</motion.div>
 		</PageTransition>
 	);

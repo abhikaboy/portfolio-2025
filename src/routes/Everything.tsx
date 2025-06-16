@@ -70,7 +70,7 @@ export default function Everything() {
 	const [loading, setLoading] = React.useState(true);
 
 	return (
-		<PageTransition>
+		<PageTransition pageName='Everything'>
 			<div style={{ color: '#fff', minHeight: '100vh' }}>
 				<motion.div
 					initial={{ opacity: 0 }}

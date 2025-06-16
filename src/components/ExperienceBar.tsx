@@ -24,7 +24,7 @@ export default function ExperienceBar({ place, title, description, onClick }: Pr
 			}}
 			style={{
 				width: '100%',
-				height: '10vh',
+				minHeight: '10vh',
 				padding: 32,
 				display: 'flex',
 				flexDirection: 'column',

@@ -71,11 +71,11 @@
 
 .pulseBeat {
 	animation-timing-function: ease-out;
-	animation: pulseSize 888ms infinite;
+	animation: pulseSize 909ms infinite;
 }
 .pulseBeatSmall {
 	animation-timing-function: ease-out;
-	animation: pulseSizeSmall 888ms infinite;
+	animation: pulseSizeSmall 909ms infinite;
 }
 
 @keyframes fadein {
@@ -98,4 +98,12 @@
 	width: 100vw;
 	height: 100vh;
 	margin: auto;
+}
+
+.pulseOpacity {
+	animation: pulse 550ms infinite;
+}
+
+.pulseOpacityProjects {
+	animation: pulse 869.565217391ms infinite;
 }

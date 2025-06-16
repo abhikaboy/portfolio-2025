@@ -6,6 +6,8 @@ import { motion } from 'framer-motion';
 import ExperienceBar from '../components/ExperienceBar';
 import { useNavigate } from 'react-router-dom';
 import PageTransition from '../animated/PageTransition';
+import '../components/backgrounds/Lights.css';
+
 export default function Projects() {
 	const projectData = [
 		{
@@ -83,7 +85,7 @@ export default function Projects() {
 	];
 	const navigate = useNavigate();
 	return (
-		<PageTransition>
+		<PageTransition pageName='Projects'>
 			<motion.div
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1 }}
@@ -92,10 +94,13 @@ export default function Projects() {
 				<img
 					src={topLight}
 					alt='top'
+					className='pulseOpacityProjects'
 					style={{
 						width: '100vw',
-						top: '0',
-						position: 'absolute',
+						top: 0,
+						left: 0,
+						position: 'fixed',
+						zIndex: 10,
 						filter: 'hue-rotate(90deg) saturate(3)',
 					}}
 				/>
@@ -108,13 +113,15 @@ export default function Projects() {
 				<img
 					src={topLight}
 					alt='top'
+					className='pulseOpacityProjects'
 					style={{
 						width: '100vw',
 						top: '100vh',
-						right: '-10vw',
+						right: '0vw',
 						position: 'absolute',
 						transform: 'rotate(90deg)',
 						filter: 'hue-rotate(90deg) saturate(5) blur(100px)',
+						overflow: 'hidden',
 					}}
 				/>
 			</motion.div>
@@ -146,11 +153,13 @@ export default function Projects() {
 			</Font>
 			<img
 				src={botLight}
+				className='pulseOpacityProjects'
 				style={{
 					width: '100vw',
 					position: 'absolute',
 					transform: 'translateY(-90%)',
 					filter: 'hue-rotate(30deg) saturate(3)',
+					overflow: 'clip',
 				}}
 			/>
 		</PageTransition>

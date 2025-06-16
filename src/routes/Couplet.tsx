@@ -13,6 +13,7 @@ import screen from '../assets/projects/couplet/cropped-phones.png';
 import { Text } from 'react-font';
 import Back from '../components/Back';
 import { motion } from 'framer-motion';
+import PageTransition from '../animated/PageTransition';
 
 export default function Couplet() {
 	const sidebarData: Section[] = [
@@ -72,23 +73,51 @@ prominent in the current dating app landscape.
 	];
 
 	return (
-		<div style={{ width: '100vw', overflow: 'hidden' }}>
-			<ProjectHeader
-				img={header}
-				text='Helping people find authentic real-world connections while supporting non-profit arts businesses in
+		<PageTransition pageName='Couplet'>
+			<div style={{ width: '100vw', overflow: 'hidden' }}>
+				<ProjectHeader
+					img={header}
+					text='Helping people find authentic real-world connections while supporting non-profit arts businesses in
               Boston'
-			/>
-			<Back />
-			<div style={{ paddingLeft: '10%', marginTop: '10%', display: 'flex', flexDirection: 'row', gap: '10%' }}>
-				<div style={{ width: '50vw' }}>
-					<ProjectSidebar input={sidebarData} />
+				/>
+				<Back />
+				<div
+					style={{ paddingLeft: '10%', marginTop: '10%', display: 'flex', flexDirection: 'row', gap: '10%' }}>
+					<div style={{ width: '50vw' }}>
+						<ProjectSidebar input={sidebarData} />
+					</div>
+					<ProjectContent input={contentData} />
 				</div>
-				<ProjectContent input={contentData} />
-			</div>
-			<motion.div
-				style={{ marginTop: '10%' }}
-				initial={{ opacity: 0 }}
-				whileInView={{ opacity: 1, transition: { duration: 1 } }}>
+				<motion.div
+					style={{ marginTop: '10%' }}
+					initial={{ opacity: 0 }}
+					whileInView={{ opacity: 1, transition: { duration: 1 } }}>
+					<motion.img
+						initial={{ opacity: 1, x: -150, scale: 1.25 }}
+						whileInView={{
+							opacity: 1,
+							x: 150,
+							scale: 1.25,
+							transition: { duration: 4.5, delay: 0, repeat: Infinity, repeatType: 'reverse' },
+						}}
+						exit={{}}
+						src={chain}
+						style={{
+							width: '100%',
+							height: '10%',
+							marginTop: '-5%',
+							transform: 'scale(1.5) translateX(0)',
+						}}
+					/>
+					<LearningOutcome
+						number={'1'}
+						title={`SQL isn't Scary`}
+						content='This was my first real introduction to relational databases. Coming from a strict NoSQL background, I definitely learned a lot here on how to actually interact with databases. Typically, people learn SQL first and its considered a simple tool to pick up, but I honestly was afraid of it for the longest time.'
+						content2={`Why? Because i didn't know it. I knew how to accomplish the same functionality with other tools, so I would always opt for those and avoided this at all costs. However, being pushed outside my comfort zone I realized the perspective of relational data and how to model data as such`}
+						background={screens}
+						icon={heart}
+					/>
+				</motion.div>
 				<motion.img
 					initial={{ opacity: 1, x: -150, scale: 1.25 }}
 					whileInView={{
@@ -106,80 +135,55 @@ prominent in the current dating app landscape.
 						transform: 'scale(1.5) translateX(0)',
 					}}
 				/>
-				<LearningOutcome
-					number={'1'}
-					title={`SQL isn't Scary`}
-					content='This was my first real introduction to relational databases. Coming from a strict NoSQL background, I definitely learned a lot here on how to actually interact with databases. Typically, people learn SQL first and its considered a simple tool to pick up, but I honestly was afraid of it for the longest time.'
-					content2='Why? Because i didn’t know it. I knew how to accomplish the same functionality with other tools, so I would always opt for those and avoided this at all costs. However, being pushed outside my comfort zone I realized the perspective of relational data and how to model data as such'
-					background={screens}
-					icon={heart}
-				/>
-			</motion.div>
-			<motion.img
-				initial={{ opacity: 1, x: -150, scale: 1.25 }}
-				whileInView={{
-					opacity: 1,
-					x: 150,
-					scale: 1.25,
-					transition: { duration: 4.5, delay: 0, repeat: Infinity, repeatType: 'reverse' },
-				}}
-				exit={{}}
-				src={chain}
-				style={{
-					width: '100%',
-					height: '10%',
-					marginTop: '-5%',
-					transform: 'scale(1.5) translateX(0)',
-				}}
-			/>
-			<div style={{ marginTop: '-5%' }}>
-				<LearningOutcome
-					number={'2'}
-					title={`Golang is awesome`}
-					content='This was my first real introduction to relational databases. Coming from a strict NoSQL background, I definitely learned a lot here on how to actually interact with databases. Typically, people learn SQL first and its considered a simple tool to pick up, but I honestly was afraid of it for the longest time.'
-					content2=''
-					background={bg2}
-					icon={guy}
-				/>
-				<motion.img
-					initial={{ opacity: 1, x: 150, scale: 1.25 }}
-					whileInView={{
-						opacity: 1,
-						x: -150,
-						scale: 1.25,
-						transition: {
-							duration: 4.5,
-							delay: 0,
-							repeat: Infinity,
-							repeatType: 'reverse',
-							ease: 'linear',
-						},
-					}}
-					exit={{}}
-					src={chain}
-					style={{
-						width: '100%',
-						height: '10%',
-						marginTop: '-5%',
-						transform: 'scale(1.5) translateX(0)',
-					}}
-				/>{' '}
-				<div
-					style={{
-						width: '100%',
-						height: '60vh',
-						backgroundColor: '#000',
-						marginTop: '5%',
-					}}>
-					<motion.img
-						initial={{ opacity: 0, y: 200 }}
-						whileInView={{ opacity: 1, y: 0, transition: { duration: 0.5, ease: 'circOut' } }}
-						src={screen}
-						style={{ width: '100%' }}
+				<div style={{ marginTop: '-5%' }}>
+					<LearningOutcome
+						number={'2'}
+						title={`Golang is awesome`}
+						content='This was my first real introduction to relational databases. Coming from a strict NoSQL background, I definitely learned a lot here on how to actually interact with databases. Typically, people learn SQL first and its considered a simple tool to pick up, but I honestly was afraid of it for the longest time.'
+						content2=''
+						background={bg2}
+						icon={guy}
 					/>
+					<motion.img
+						initial={{ opacity: 1, x: 150, scale: 1.25 }}
+						whileInView={{
+							opacity: 1,
+							x: -150,
+							scale: 1.25,
+							transition: {
+								duration: 4.5,
+								delay: 0,
+								repeat: Infinity,
+								repeatType: 'reverse',
+								ease: 'linear',
+							},
+						}}
+						exit={{}}
+						src={chain}
+						style={{
+							width: '100%',
+							height: '10%',
+							marginTop: '-5%',
+							transform: 'scale(1.5) translateX(0)',
+						}}
+					/>{' '}
+					<div
+						style={{
+							width: '100%',
+							height: '60vh',
+							backgroundColor: '#000',
+							marginTop: '5%',
+						}}>
+						<motion.img
+							initial={{ opacity: 0, y: 200 }}
+							whileInView={{ opacity: 1, y: 0, transition: { duration: 0.5, ease: 'circOut' } }}
+							src={screen}
+							style={{ width: '100%' }}
+						/>
+					</div>
 				</div>
 			</div>
-		</div>
+		</PageTransition>
 	);
 }
 

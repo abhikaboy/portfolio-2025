@@ -1,6 +1,7 @@
 import Font from 'react-font';
+import { ReactNode } from 'react';
 type Props = {
-	children: string;
+	children: ReactNode;
 };
 
 export default function HomeText({ children }: Props) {
