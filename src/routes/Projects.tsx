@@ -102,6 +102,7 @@ export default function Projects() {
 						position: 'fixed',
 						zIndex: 10,
 						filter: 'hue-rotate(90deg) saturate(3)',
+						pointerEvents: 'none',
 					}}
 				/>
 			</motion.div>

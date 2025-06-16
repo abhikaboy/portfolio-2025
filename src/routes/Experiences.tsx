@@ -27,6 +27,7 @@ export default function Experiences() {
 							position: 'fixed',
 							zIndex: 10,
 							filter: 'hue-rotate(20deg)',
+							pointerEvents: 'none',
 						}}
 					/>
 				</motion.div>
