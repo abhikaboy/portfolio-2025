@@ -192,17 +192,21 @@ function NavigateHint() {
 /** Stacked layout under 1024px: same type styles, header fixed, content scrolls. */
 function Mobile({ route, page, w }: { route: Route; page: Page; w: number }) {
   const artZoom = w / ART_W
+  // The nav scrolls away with the page; the scroller outlives routes (so the nav's bar can slide), so reset it here.
+  const scroller = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    scroller.current?.scrollTo(0, 0)
+  }, [route])
   return (
-    <div className="flex h-dvh flex-col overflow-hidden bg-white" style={{ '--accent': page.accent } as CSSProperties}>
-      <header className="flex shrink-0 items-start justify-between px-[24px] pt-[24px]">
+    <div
+      ref={scroller}
+      className={`h-dvh overflow-x-hidden overflow-y-auto [overflow-anchor:none] bg-white ${hideScrollbar}`}
+      style={{ '--accent': page.accent } as CSSProperties}
+    >
+      <header className="px-[24px] pt-[24px]">
         <Nav active={route} />
-        {route === '' && (
-          <a href="#/" className={cn('pt-[8px]', beak)}>
-            beak
-          </a>
-        )}
       </header>
-      <main key={route} className={`relative flex-1 overflow-x-hidden overflow-y-auto [overflow-anchor:none] ${hideScrollbar}`}>
+      <main key={route} className="relative">
         <div className="flex flex-col gap-[40px] px-[24px] pt-[32px] pb-[48px]">
           {page.heading && <h1 className={`font-normal ${body}`}>{page.heading}</h1>}
           {page.list && <List list={page.list} stacked />}
