@@ -246,7 +246,7 @@ export function Nav({ active }: { active: Route }) {
 // All 20px text uses -2% tracking (Figma's other frames still show -4%; -2% is the agreed value).
 export const body = 'text-[20px] leading-[23px] tracking-[-0.02em] text-[#2b2b2b] text-justify'
 
-export const statement = 'text-[48px] leading-[56px] tracking-[-0.04em] text-[#030032]'
+export const statement = 'text-[48px] leading-[56px] tracking-[-0.04em] text-black'
 
 // Placeholder bio copy.
 export const HERO_COPY = [
