@@ -16,6 +16,9 @@ import heroPoster from '@/assets/figma/hero-poster.png'
 import heroVideo from '@/assets/figma/hero-boomerang.mp4'
 import projectsImg from '@/assets/figma/projects.png'
 import writtenImg from '@/assets/figma/written.png'
+import kindredImg from '@/assets/kindred.png'
+import phinistaImg from '@/assets/phinista.png'
+import streamlightImg from '@/assets/streamlight.png'
 import { Halftone, mediaClass } from '@/components/halftone'
 import { cn } from '@/lib/utils'
 import { CURVES, CurveCtx, Highlight, Ink, InkBox, WheelTrail } from '@/transitions'
@@ -24,8 +27,11 @@ export const NAV = ['created', 'experienced', 'written', 'designed'] as const
 export type Route = '' | (typeof NAV)[number]
 
 type Bar = { x: number; y: number; w: number; h: number }
-/** `muted` rows are the grey "Project:" lines under a job (Figma 71:795–71:802). */
-export type Row = { title: string; text: string; href?: string; muted?: boolean }
+/**
+ * `muted` rows are the grey "Project:" lines under a job (Figma 71:795–71:802). `image` replaces the media slot's
+ * placeholder at its natural aspect.
+ */
+export type Row = { title: string; text: string; href?: string; muted?: boolean; image?: string }
 
 export type Page = {
   heading?: string
@@ -99,8 +105,8 @@ const created: Page = {
     media: true,
     bar: { x: -31, y: -1, w: 132, h: 19 },
     rows: [
-      { title: 'Streamlight', text: DESCRIPTION },
-      { title: 'Kindred', text: DESCRIPTION },
+      { title: 'Streamlight', text: DESCRIPTION, image: streamlightImg },
+      { title: 'Kindred', text: DESCRIPTION, image: kindredImg },
       { title: 'PlateMate', text: DESCRIPTION },
       { title: 'Platnm', text: DESCRIPTION },
       { title: 'Relay', text: DESCRIPTION },
@@ -187,7 +193,10 @@ const designed: Page = {
     gap: 32,
     bar: { x: -20, y: 0, w: 153, h: 17 },
     media: true,
-    rows: [{ title: 'Phinista Posters', text: DESCRIPTION }],
+    rows: [
+      { title: 'Kindred', text: DESCRIPTION, image: kindredImg },
+      { title: 'Phinista Posters', text: DESCRIPTION, image: phinistaImg },
+    ],
   },
   artTop: 209,
   art: (
@@ -375,20 +384,31 @@ export function List({ list, stacked }: { list: NonNullable<Page['list']>; stack
               <Ink className={stacked ? 'max-w-[385px]' : 'grid-w-1 shrink-0'}>{row.text}</Ink>
             )}
           </div>
-          {/* Only the selected work shows its image slot; it opens/closes in place so the rows below reflow. */}
+          {/* Only the selected work shows its image slot; it opens/closes in place so the rows below reflow.
+              Clipped vertically only, so media can run past the column: placeholders off the frame's right edge (1247px,
+              as in Figma), images flush with it. */}
           <AnimatePresence initial={false}>
             {list.media && i === selected && (
               <motion.div
                 ref={(el) => void (mediaRefs.current[i] = el)}
-                className="overflow-hidden"
+                className="overflow-y-clip"
                 initial={{ height: 0 }}
                 animate={{ height: 'auto' }}
                 exit={{ height: 0 }}
                 transition={reflow}
               >
                 <div style={{ paddingTop: list.gap }}>
-                  <InkBox className="shrink-0">
-                    <Placeholder />
+                  {/* Sized to the media so the wipe box covers the part past the column. */}
+                  <InkBox className={cn('shrink-0', !stacked && 'w-max')}>
+                    {row.image ? (
+                      <img alt="" src={row.image} className={cn(
+                          'block h-auto max-w-none',
+                          // Column 3's left edge to the frame's right edge: columns 3–4, their gutter, the right margin.
+                          stacked ? 'w-full' : 'w-[calc(2*var(--grid-col)+var(--grid-gutter)+var(--grid-margin))]',
+                        )} />
+                    ) : (
+                      <Placeholder />
+                    )}
                   </InkBox>
                 </div>
               </motion.div>

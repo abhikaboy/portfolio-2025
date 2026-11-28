@@ -2,7 +2,7 @@ import { motion, MotionConfig } from 'motion/react'
 import { useEffect, useRef, useState, type CSSProperties, type WheelEvent } from 'react'
 import { cn } from '@/lib/utils'
 import { body, HERO_COPY, List, Nav, NAV, PAGES, statement, type Page, type Route } from '@/pages'
-import { ArtStage, CURVES, CurveProvider, Ink, Slot, WIPE, type ArtKind, type TextCurve, type TextKind, type WheelCurve } from '@/transitions'
+import { ArtStage, CURVES, CurveProvider, Ink, InkBox, Slot, WIPE, type ArtKind, type TextCurve, type TextKind, type WheelCurve } from '@/transitions'
 
 // Figma frame size (MacBook Pro 16" preset).
 const FRAME_W = 1728
@@ -171,20 +171,23 @@ function Desktop({ route, from, settings, w, h }: { route: Route; from: Route; s
 }
 
 // Figma 41:714 + the two rotated Outfit "→" glyphs (41:739, 41:740), laid out from the start of column 4.
+// One InkBox over text and arrows so the hint wipes as a single bar (from the left arrow at x=-8).
 function NavigateHint() {
-  const arrow = 'font-[Outfit] text-[20px] leading-[25px] tracking-[-0.02em] whitespace-nowrap text-black'
+  const arrow = 'flex-none font-[Outfit] text-[20px] leading-[25px] tracking-[-0.02em] whitespace-nowrap text-black'
   return (
     <div className="absolute top-0 grid-x-4">
-      <Ink className={`absolute top-[43px] left-[15px] whitespace-pre ${body}`}>
-        <span>{'up and      down '}</span>
-        <span className="text-[#c2c2c2]">to navigate</span>
-      </Ink>
-      <div className="absolute top-[48px] left-[-8px] flex h-[14px] w-[25px] items-center justify-center">
-        <Ink className={`flex-none -rotate-90 ${arrow}`}>→</Ink>
-      </div>
-      <div className="absolute top-[50px] left-[79px] flex h-[14px] w-[25px] items-center justify-center">
-        <Ink className={`flex-none rotate-90 ${arrow}`}>→</Ink>
-      </div>
+      <InkBox className="absolute top-[43px] left-[-8px] w-max">
+        <p className={`whitespace-pre pl-[23px] ${body}`}>
+          <span>{'up and      down '}</span>
+          <span className="text-[#c2c2c2]">to navigate</span>
+        </p>
+        <div className="absolute top-[5px] left-0 flex h-[14px] w-[25px] items-center justify-center">
+          <div className={`-rotate-90 ${arrow}`}>→</div>
+        </div>
+        <div className="absolute top-[7px] left-[87px] flex h-[14px] w-[25px] items-center justify-center">
+          <div className={`rotate-90 ${arrow}`}>→</div>
+        </div>
+      </InkBox>
     </div>
   )
 }
